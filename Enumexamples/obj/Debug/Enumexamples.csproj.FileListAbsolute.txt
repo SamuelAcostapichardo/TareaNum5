@@ -1,0 +1,15 @@
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.csprojAssemblyReference.cache
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.Properties.Resources.resources
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.csproj.GenerateResource.cache
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.csproj.CoreCompileInputs.cache
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\bin\Debug\Enumexamples.exe.config
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\bin\Debug\Enumexamples.exe
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\bin\Debug\Enumexamples.pdb
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.exe
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.pdb
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.formularioprincipal.resources
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.Formviembenida.resources
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\bin\Debug\nunit.framework.dll
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\bin\Debug\nunit.framework.pdb
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\bin\Debug\nunit.framework.xml
+C:\Users\sam82\source\repos\Enumexamples\Enumexamples\obj\Debug\Enumexamples.csproj.CopyComplete
