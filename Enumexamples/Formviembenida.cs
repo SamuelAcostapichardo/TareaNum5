@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Windows.Forms;
 
 namespace Enumexamples
@@ -10,6 +11,9 @@ namespace Enumexamples
         public Formviembenida()
         {
             InitializeComponent();
+
+            
+
         }
 
         private void Formviembenida_Load(object sender, EventArgs e)
@@ -19,6 +23,16 @@ namespace Enumexamples
             Dominio dom = new Dominio();
             dom.obtenerrol();
             //pruebaTool();
+
+            claseroles n = new claseroles();
+            List<ToolStripMenuItem> MyItems = ObtenerOPciones(this.menuStrip1);
+            foreach (var item in MyItems)
+            {
+
+                //item.Enabled = false;
+                item.Enabled = n.validarOpcion(Clasecache.Iniciodesessioncache.Idrol, item.Name);
+
+            }
 
 
         }
@@ -37,20 +51,16 @@ namespace Enumexamples
             List<ToolStripMenuItem> MyItem = new List<ToolStripMenuItem>();
             foreach (ToolStripMenuItem i in menuStrip.Items)
             {
-                // MessageBox.Show(i.Name);
+                 //MessageBox.Show(i.Name);
 
-                claseroles n = new claseroles();
-                foreach (ToolStripMenuItem item in i.DropDownItems)
-                {
+                //claseroles n = new claseroles();
+                //foreach (ToolStripMenuItem item in i.DropDownItems)
+                //{
 
-                    // MessageBox.Show(item.Name);
-                    //if (item.Name == )
-                    //{
 
-                    //}
 
-                }
-
+                //}
+                obteneritemtol(i,MyItem);
 
             }
 
@@ -79,15 +89,15 @@ namespace Enumexamples
 
         private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            claseroles n = new claseroles();
-            List<ToolStripMenuItem> MyItem = ObtenerOPciones(this.menuStrip1);
-            foreach (var item in MyItem)
-            {
+            //claseroles n = new claseroles();
+            //List<ToolStripMenuItem> MyItems = ObtenerOPciones(this.menuStrip1);
+            //foreach (var item in MyItems)
+            //{
 
-                item.Enabled = false;
-                // item.Enabled = n.validarOpcion(Clasecache.Iniciodesessioncache.Idrol, item.Name);
-
-            }
+            //    //item.Enabled = false;
+            //    item.Enabled = n.validarOpcion(Clasecache.Iniciodesessioncache.Idrol,item.Name );
+               
+            //}
 
 
         }

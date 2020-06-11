@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -215,5 +216,31 @@ namespace Enumexamples
         }
 
 
+        public bool Verificar_Accesos(int codigorol, string nombreopcion)
+        {
+
+            using (var conection = Getconection())
+            {
+                String buscar = "SP_Consulta_Acceso_Opciones";
+                SqlDataAdapter da = new SqlDataAdapter(buscar, conection);
+                conection.Open();
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.Add("@codigorol", SqlDbType.Int).Value = codigorol;
+                da.SelectCommand.Parameters.Add("@nombreopcion", SqlDbType.VarChar).Value = nombreopcion;
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+
+                    return bool.Parse(dt.Rows[0]["acceder"].ToString());
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
