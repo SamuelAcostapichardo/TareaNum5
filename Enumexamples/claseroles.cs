@@ -32,7 +32,7 @@ namespace Enumexamples
                             Clasecache.Iniciodesessioncache.Idrol = Reader.GetInt32(0);
 
                     }
-                    conection.Close();
+
                 }
 
             }
@@ -62,7 +62,7 @@ namespace Enumexamples
                             Clasecache.Iniciodesessioncache.Estatususuario = reader.GetString(3);
                             Clasecache.Iniciodesessioncache.nombrecompleto = reader.GetString(4);
 
-                            obtenerrol();
+                            //obtenerrol();
                             obtenermodul();
                             Accesoamodulo();
 
@@ -104,7 +104,7 @@ namespace Enumexamples
                     obtenermodul();
                     Accesoamodulo();
 
-                    conection.Close();
+                    
 
                     return true;
                 }
@@ -114,26 +114,31 @@ namespace Enumexamples
 
             }
         }
-    
-
-        //List<ToolStripMenuItem> MyItem = ObtenerOPciones(this.menuStrip1);
 
 
-        //public static  List<ToolStripMenuItem> ObtenerOPciones(MenuStrip menuStrip)
-        //{
+       /* List<ToolStripMenuItem> MyItem = ObtenerOPciones(this.menuStrip1);*/
 
-        //    List<ToolStripMenuItem> MyItem = new List<ToolStripMenuItem>();
-        //    foreach (ToolStripMenuItem i in menuStrip.Items)
-        //    {
 
-                
-        //    }
+        public static List<ToolStripMenuItem> ObtenerOPciones(MenuStrip menuStrip)
+        {
 
-        //    return MyItem;
-            
+            List<ToolStripMenuItem> MyItem = new List<ToolStripMenuItem>();
+            foreach (ToolStripMenuItem i in menuStrip.Items)
+            {
+                MessageBox.Show(i.Name);
+                    
+            }
 
-        //}
+            return MyItem;
 
+
+        }
+
+
+
+
+
+             
 
         public void Accesoamodulo()
         {
@@ -155,7 +160,7 @@ namespace Enumexamples
                             Clasecache.Iniciodesessioncache.Accesoamod = Reader.GetBoolean(3);
 
                     }
-                    conection.Close();
+                    
                 }
 
             }
@@ -177,14 +182,36 @@ namespace Enumexamples
                 if (dt.Rows.Count > 0)
                 {
                     Clasecache.Iniciodesessioncache.Codigomod = int.Parse(dt.Rows[0]["codigomod"].ToString());
-                    Clasecache.Iniciodesessioncache.Estatusmod = dt.Rows[0]["estatumd"].ToString();
+                   // Clasecache.Iniciodesessioncache.Estatusmod = dt.Rows[0]["estatumd"].ToString();
 
                 }
-                conection.Close();
+                
 
 
             }
 
+        }
+
+        public bool validarOpcion( int codigorol, string nombreopcion)
+        {
+            using (var conection = Getconection())
+            {
+                conection.Open();
+                string strsql = "select * from vistapermisos where codigorol = '" + codigorol + "' and subopcion like  '" + nombreopcion + "' ";
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(strsql, conection);
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+
+                    return bool.Parse(dt.Rows[0]["acceder"].ToString());
+
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
 

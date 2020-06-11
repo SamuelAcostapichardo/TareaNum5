@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Enumexamples
@@ -20,47 +14,78 @@ namespace Enumexamples
 
         private void Formviembenida_Load(object sender, EventArgs e)
         {
-            Metodoseguro();
+            // Metodoseguro();
             cargardatosuser();
             Dominio dom = new Dominio();
             dom.obtenerrol();
+            //pruebaTool();
+
 
         }
 
         private void cargardatosuser()
         {
-            lblrol.Text = Clasecache.Iniciodesessioncache.Estatusmod.ToString();
+            lblrol.Text = Clasecache.Iniciodesessioncache.Idrol.ToString();
             lblnombrecom.Text = Clasecache.Iniciodesessioncache.nombrecompleto;
             lblnombreusu.Text = Clasecache.Iniciodesessioncache.nombreusuario;
-            lblstatususu.Text = Clasecache.Iniciodesessioncache.Idrol.ToString();
+            lblstatususu.Text = Clasecache.Iniciodesessioncache.codigousuario.ToString();
 
         }
 
-
-        public void Metodoseguro()
+        public static List<ToolStripMenuItem> ObtenerOPciones(MenuStrip menuStrip)
         {
-            if (Clasecache.Iniciodesessioncache.Idrol == Roles.cargos.Administrador )
+            List<ToolStripMenuItem> MyItem = new List<ToolStripMenuItem>();
+            foreach (ToolStripMenuItem i in menuStrip.Items)
             {
-                tsbinventario.Enabled = false;
-              
-             
+                // MessageBox.Show(i.Name);
+
+                claseroles n = new claseroles();
+                foreach (ToolStripMenuItem item in i.DropDownItems)
+                {
+
+                    // MessageBox.Show(item.Name);
+                    //if (item.Name == )
+                    //{
+
+                    //}
+
+                }
+
+
             }
 
-            if (Clasecache.Iniciodesessioncache.Estatusmod == Roles.Estadousuario.Inactivo)
+            return MyItem;
+
+
+        }
+
+
+        private static void obteneritemtol(ToolStripMenuItem item, List<ToolStripMenuItem> items)
+        {
+
+            items.Add(item);
+            foreach (ToolStripMenuItem i in item.DropDownItems)
             {
 
-                per.Permisosadmin(tsbusuarios);
-                tsbAdministrar.Enabled = false;
-                tsbconsulta.Enabled = false;
+                if (i is ToolStripMenuItem)
+                {
+                    obteneritemtol((ToolStripMenuItem)i, items);
+                }
 
             }
+        }
 
-            if (Clasecache.Iniciodesessioncache.Idrol == Roles.cargos.DB)
+
+
+        private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            claseroles n = new claseroles();
+            List<ToolStripMenuItem> MyItem = ObtenerOPciones(this.menuStrip1);
+            foreach (var item in MyItem)
             {
 
-                //per.Permisosadmin(tsbusuarios);
-                /// tsbAdministrar.Enabled = false;
-                //tsbconsulta.Enabled = false;
+                item.Enabled = false;
+                // item.Enabled = n.validarOpcion(Clasecache.Iniciodesessioncache.Idrol, item.Name);
 
             }
 
@@ -69,8 +94,50 @@ namespace Enumexamples
 
 
 
+        //public void Metodoseguro()
+        //{
+        //    if (Clasecache.Iniciodesessioncache.Idrol == Roles.cargos.Administrador )
+        //    {
+        //        mnuinventario.Enabled = false;
+
+
+        //    }
+
+        //    if (Clasecache.Iniciodesessioncache.Estatusmod == Roles.Estadousuario.Inactivo)
+        //    {
+
+        //        per.Permisosadmin(mnuusuarios);
+        //        tsbAdministrar.Enabled = false;
+        //        mnuconsulta.Enabled = false;
+
+        //    }
+
+        //    if (Clasecache.Iniciodesessioncache.Idrol == Roles.cargos.DB)
+        //    {
+
+        //        //per.Permisosadmin(tsbusuarios);
+        //        /// tsbAdministrar.Enabled = false;
+        //        //tsbconsulta.Enabled = false;
+
+        //    }
+
+
+        //}
+
+
+
+
+
+
+
+        /* List<ToolStripMenuItem> menuItem = new List<ToolStripMenuItem>();
+             foreach (ToolStripMenuItem I in menuStrip.Items)
+             {
+                 MessageBox.Show(menuItem.name);
+
+             }*/
 
     }
 
-   
+
 }
